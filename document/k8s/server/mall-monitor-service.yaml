@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mall-monitor-service
+  namespace: default
+spec:
+  # 为了外部能访问SpringBootAdmin监控，将类型改为NodePort
+  type: NodePort
+  selector:
+    app: mall-monitor
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8101
+      targetPort: 8101
+      #暴露node端口
+      nodePort: 30202

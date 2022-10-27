@@ -1,0 +1,8 @@
+docker run --name minio -p 9000:9000 -p 9001:9001 -d \
+--restart=always -e \
+"MINIO_ROOT_USER=minioadmin" \
+-e "MINIO_ROOT_PASSWORD=minioadmin" \
+-e "MINIO_SERVER_URL=http://172.16.33.162:9000" \
+-e "MINIO_BROWSER_REDIRECT_URL=http://172.16.33.162:9001" \
+-v /mydata/minio/data:/data \
+-v /mydata/minio/config:/root/.minio minio/minio server /data --console-address ':9001' --address ':9000'
